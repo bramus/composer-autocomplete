@@ -1,12 +1,12 @@
-_composer_scripts() {
-    local cur prev
+function _composer_scripts() {
+    local cur prev;
     _get_comp_words_by_ref -n : cur
 
     COMPREPLY=()
     prev="${COMP_WORDS[COMP_CWORD-1]}"
 
     #
-    #  Complete the arguments to some of the commands.
+    # Complete the arguments to some of the commands.
     #
     if [ "$prev" != "composer" ] ; then
         local opts=$(composer $prev -h --no-ansi | tr -cs '[=-=][:alpha:]_' '[\n*]' | grep '^-')
