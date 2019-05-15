@@ -6,6 +6,15 @@ function _composer_scripts() {
     prev="${COMP_WORDS[COMP_CWORD-1]}"
 
     #
+    # Complete scripts for composer "run-script" command.
+    #
+    if [ "$prev" == "run-script" ] ; then
+        local scripts=$(composer --no-ansi 2> /dev/null | grep 'script as defined in composer.json' | awk '/^ +[a-z]+/ { print $1 }')
+        COMPREPLY=( $(compgen -W "${scripts}" -- ${cur}) )
+        return 0
+    fi
+
+    #
     # Complete the arguments to some of the commands.
     #
     if [ "$prev" != "composer" ] ; then
