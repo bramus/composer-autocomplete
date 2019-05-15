@@ -18,7 +18,7 @@ _composer_scripts() {
     if [[ "$cur" == -* ]]; then
         COMPREPLY=( $( compgen -W '-h -q -v -V -n -d \
             --help --quiet --verbose --version --ansi --no-ansi \
-            --no-interaction --profile --working-dir' -- "$cur" ) )
+            --no-interaction --profile --no-plugins --working-dir' -- "$cur" ) )
     else
         local scripts=$(composer --no-ansi 2> /dev/null |  awk '/^ +[a-z]+/ { print $1 }')
         COMPREPLY=( $(compgen -W "${scripts}" -- ${cur}) )
