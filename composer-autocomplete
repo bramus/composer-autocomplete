@@ -24,7 +24,6 @@ _composer_scripts() {
         COMPREPLY=( $(compgen -W "${scripts}" -- ${cur}) )
     fi
 
-    __ltrim_colon_completions "$cur"
     return 0
 }
 
