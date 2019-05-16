@@ -1,6 +1,6 @@
 # Bash/Shell Autocompletion for Composer
 
-[![Source](http://img.shields.io/badge/source-bramus/composer-autocomplete-blue.svg?style=flat-square)](https://github.com/bramus/composer-autocomplete) [![License](https://img.shields.io/packagist/l/bramus/composer-autocomplete.svg?style=flat-square)](https://github.com/bramus/composer-autocomplete/blob/master/LICENSE)
+[![Source](http://img.shields.io/badge/source-bramus/composer--autocomplete-blue.svg?style=flat-square)](https://github.com/bramus/composer-autocomplete) [![License](https://img.shields.io/github/license/bramus/composer-autocomplete.svg?style=flat-square)](https://github.com/bramus/composer-autocomplete/blob/master/LICENSE)
 
 `composer-autocomplete` provides Bash/Shell autocompletion for Composer.
 
