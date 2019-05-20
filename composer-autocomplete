@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function _composer_scripts() {
     local cur prev;
     _get_comp_words_by_ref -n : cur
