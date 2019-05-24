@@ -20,13 +20,13 @@ Built by Bram(us) Van Damme _([https://www.bram.us](https://www.bram.us))_ and [
 	$ mv ./composer-autocomplete ~/composer-autocomplete
 	```
 
-3. Load `composer-autocomplete` from within your `~/.bashrc`
+3. Load `composer-autocomplete` from within your `~/.bash_profile`
 
 	```
-	$ echo "" >> ~/.bashrc
-	$ echo 'if [ -f "$HOME/composer-autocomplete" ] ; then' >> ~/.bashrc
-	$ echo '    . $HOME/composer-autocomplete' >> ~/.bashrc
-	$ echo "fi" >> ~/.bashrc
+	$ echo "" >> ~/.bash_profile
+	$ echo 'if [ -f "$HOME/composer-autocomplete" ] ; then' >> ~/.bash_profile
+	$ echo '    . $HOME/composer-autocomplete' >> ~/.bash_profile
+	$ echo "fi" >> ~/.bash_profile
 	```
 
 4. Restart your shell, or reload your `~/.bash_profile`
