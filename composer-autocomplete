@@ -1,15 +1,16 @@
 function _composer_scripts() {
-    local cur prev;
+    local cmd cur prev;
     _get_comp_words_by_ref -n : cur
 
     COMPREPLY=()
+    cmd="${COMP_WORDS[0]/#\~/$HOME}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
 
     #
     # Complete scripts for composer "run-script" command.
     #
     if [ "$prev" == "run-script" ] ; then
-        local scripts=$(composer --no-ansi 2> /dev/null | grep 'script as defined in composer.json' | awk '/^ +[a-z]+/ { print $1 }')
+        local scripts=$("$cmd" --no-ansi 2> /dev/null | grep 'script as defined in composer.json' | awk '/^ +[a-z]+/ { print $1 }')
         COMPREPLY=( $(compgen -W "${scripts}" -- ${cur}) )
         return 0
     fi
@@ -17,8 +18,8 @@ function _composer_scripts() {
     #
     # Complete the arguments to some of the commands.
     #
-    if [ "$prev" != "composer" ] ; then
-        local opts=$(composer $prev -h --no-ansi | tr -cs '[=-=][:alpha:]_' '[\n*]' | grep '^-')
+    if [ "$prev" != "${COMP_WORDS[0]}" ] ; then
+        local opts=$("$cmd" $prev -h --no-ansi | tr -cs '[=-=][:alpha:]_' '[\n*]' | grep '^-')
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
         return 0
     fi
@@ -29,11 +30,11 @@ function _composer_scripts() {
             --help --quiet --verbose --version --ansi --no-ansi \
             --no-interaction --profile --no-plugins --working-dir' -- "$cur" ) )
     else
-        local commands=$(composer --no-ansi 2> /dev/null | awk '/^ +[a-z]+/ { print $1 }')
+        local commands=$("$cmd" --no-ansi 2> /dev/null | awk '/^ +[a-z]+/ { print $1 }')
         COMPREPLY=( $(compgen -W "${commands}" -- ${cur}) )
     fi
 
     return 0
 }
 
-complete -F _composer_scripts composer
+complete -F _composer_scripts composer composer.phar
