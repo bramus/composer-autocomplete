@@ -6,33 +6,52 @@
 
 Built by Bram(us) Van Damme _([https://www.bram.us](https://www.bram.us))_ and [Contributors](https://github.com/bramus/enumeration/graphs/contributors)
 
+## Prerequisites
+
+If the `complete` command is not available on your system, you can install `bash-completion` using [Homebrew](https://brew.sh/)
+
+```shell
+brew install bash-completion
+```
+
+
 ## Installation
 
 1. Download the [file `composer-autocomplete`](composer-autocomplete) from this repo
 
-	```
-	$ curl -#L https://github.com/bramus/composer-autocomplete/tarball/master | tar -xzv --strip-components 1 --exclude={LICENSE,README.md}
+	```shell
+	curl -#L https://github.com/bramus/composer-autocomplete/tarball/master | tar -xzv --strip-components 1 --exclude={LICENSE,README.md}
 	```
 
 2. Move the file `composer-autocomplete` to `~`
 
-	```
-	$ mv ./composer-autocomplete ~/composer-autocomplete
+	```shell
+	mv ./composer-autocomplete ~/composer-autocomplete
 	```
 
 3. Load `composer-autocomplete` from within your `~/.bash_profile`
 
+	Either manually add this snippet to your `~/.bash_profile`:
+
+	```bash
+	if [ -f "$HOME/composer-autocomplete" ] ; then
+	    . $HOME/composer-autocomplete
+	fi
 	```
-	$ echo "" >> ~/.bash_profile
-	$ echo 'if [ -f "$HOME/composer-autocomplete" ] ; then' >> ~/.bash_profile
-	$ echo '    . $HOME/composer-autocomplete' >> ~/.bash_profile
-	$ echo "fi" >> ~/.bash_profile
+
+	Or use this set of commands to do it automatically:
+
+	```shell
+	echo "" >> ~/.bash_profile
+	echo 'if [ -f "$HOME/composer-autocomplete" ] ; then' >> ~/.bash_profile
+	echo '    . $HOME/composer-autocomplete' >> ~/.bash_profile
+	echo "fi" >> ~/.bash_profile
 	```
 
 4. Restart your shell, or reload your `~/.bash_profile`
 
-	```
-	$ source ~/.bash_profile
+	```shell
+	source ~/.bash_profile
 	```
 
 
