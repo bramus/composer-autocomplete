@@ -19,7 +19,7 @@ function _composer_scripts() {
     # Complete the arguments to some of the commands.
     #
     if [ "$prev" != "${COMP_WORDS[0]}" ] ; then
-        local opts=$("$cmd" $prev -h --no-ansi | tr -cs '[=-=][:alpha:]_' '[\n*]' | grep '^-')
+        local opts=$("$cmd" "${COMP_WORDS[1]}" -h --no-ansi | tr -cs '[=-=][:alpha:]_' '[\n*]' | grep '^-')
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
         return 0
     fi
