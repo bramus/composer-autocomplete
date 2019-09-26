@@ -28,7 +28,7 @@ function _composer_scripts() {
     # Complete the arguments to some of the commands.
     #
     if [ "$subcmd" != "${COMP_WORDS[0]}" ] ; then
-        local opts=$("$cmd" "$subcmd" -h --no-ansi | tr -cs '[=-=][:alpha:]_' '[\n*]' | grep '^-')
+        local opts=$("$cmd" "$subcmd" -h --no-ansi 2> /dev/null | tr -cs '[=-=][:alpha:]_' '[\n*]' | grep '^-')
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
         return 0
     fi
