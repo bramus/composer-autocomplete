@@ -4,7 +4,7 @@
 
 `composer-autocomplete` provides Bash/Shell autocompletion for Composer.
 
-Built by Bram(us) Van Damme _([https://www.bram.us](https://www.bram.us))_ and [Contributors](https://github.com/bramus/enumeration/graphs/contributors)
+Built by Bram(us) Van Damme _([https://www.bram.us](https://www.bram.us))_ and [Contributors](https://github.com/bramus/composer-autocomplete/graphs/contributors)
 
 ## Prerequisites
 
