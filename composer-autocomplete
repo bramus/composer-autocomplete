@@ -20,11 +20,21 @@ function _composer_scripts() {
     #
     if [ "$subcmd" != "${COMP_WORDS[0]}" ] ; then
         local opts=$("$cmd" "$subcmd" -h --no-ansi 2> /dev/null | tr -cs '[=-=][:alpha:]_' '[\n*]' | grep '^-')
-        # Complete scripts for composer "run-script" command.
-        if [ "$subcmd" == "run-script" ] ; then
-            local scripts=$("$cmd" --no-ansi 2> /dev/null | grep 'script as defined in composer.json' | awk '/^ +[a-z]+/ { print $1 }')
-        fi
-        COMPREPLY=( $(compgen -W "${opts} ${scripts}" -- ${cur}) )
+        case "$subcmd" in
+            "run-script")
+                # Complete scripts for composer "run-script" command.
+                local cfgargs=$("$cmd" --no-ansi 2> /dev/null | grep 'script as defined in composer.json' | awk '/^ +[a-z]+/ { print $1 }')
+                ;;
+            "update")
+                # Complete package names listed in the require and
+                # require-dev sections in the composer.json.
+                # Exclude ext-* and php version requirements.
+                if `command -v jq > /dev/null 2>&1`; then
+                    local cfgargs=$(jq -r '.require + ."require-dev" | keys[]' composer.json 2> /dev/null | grep -v '^ext-' | grep -v '^php$')
+                fi
+                ;;
+        esac
+        COMPREPLY=( $(compgen -W "${opts} ${cfgargs}" -- ${cur}) )
         return 0
     fi
 
