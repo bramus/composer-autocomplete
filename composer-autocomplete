@@ -25,7 +25,7 @@ function _composer_scripts() {
                 # Complete scripts for composer "run-script" command.
                 local cfgargs=$("$cmd" --no-ansi 2> /dev/null | grep 'script as defined in composer.json' | awk '/^ +[a-z]+/ { print $1 }')
                 ;;
-            "update")
+            "update" | "show" | "prohibits" | "why-not" | "depends" | "why" | "remove" | "reinstall" | "archive")
                 # Complete package names listed in the require and
                 # require-dev sections in the composer.json.
                 # Exclude ext-* and php version requirements.
